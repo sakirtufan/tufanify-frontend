@@ -31,7 +31,7 @@ export const UserSignupPage = () => {
 
   const onClickSignup = (e) => {
     e.preventDefault();
-    const signupURL = "http://localhost:8080/api/1.0/users";
+    const signupURL = "/api/1.0/users";
     Axios.post(signupURL, signupBody);
   };
 
