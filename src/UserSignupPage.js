@@ -1,7 +1,9 @@
 import React from "react";
+import Axios from "axios";
 import { useState } from "react";
 
 export const UserSignupPage = () => {
+
   const [state, setState] = useState({
     username: "",
     displayName: "",
@@ -12,7 +14,6 @@ export const UserSignupPage = () => {
   const [agreed, setAgreed] = useState(false);
 
   const handleChange = (event) => {
-
     const { name, value } = event.target;
     setState({
       ...state,
@@ -20,15 +21,29 @@ export const UserSignupPage = () => {
     });
   };
 
+  const { username, displayName, password } = state;
+
+  const signupBody = {
+    username,
+    displayName,
+    password,
+  };
+
+  const onClickSignup = (e) => {
+    e.preventDefault();
+    const signupURL = "http://localhost:8080/api/1.0/users";
+    Axios.post(signupURL, signupBody);
+  };
+
   return (
     <form>
-      <h1>Sign Up </h1>
+      <h1> Sign Up </h1>
       <div>
-        <label>Username</label>
+        <label> Username </label>
         <input name="username" value={state.username} onChange={handleChange} />
       </div>
       <div>
-        <label>Display Name</label>
+        <label> Display Name </label>
         <input
           name="displayName"
           value={state.displayName}
@@ -36,7 +51,7 @@ export const UserSignupPage = () => {
         />
       </div>
       <div>
-        <label>Password</label>
+        <label> Password </label>
         <input
           name="password"
           type="password"
@@ -45,7 +60,7 @@ export const UserSignupPage = () => {
         />
       </div>
       <div>
-        <label>Password Repeat</label>
+        <label> Password Repeat </label>
         <input
           name="passwordRepeat"
           type="password"
@@ -54,15 +69,16 @@ export const UserSignupPage = () => {
         />
       </div>
       <div>
-        <label>Agreed</label>
+        <label> Agreed </label>
         <input
           checked={agreed}
           onChange={() => setAgreed(!agreed)}
           type="checkbox"
         />
       </div>
-
-      <button disabled={!agreed}>Sign up</button>
+      <button onClick={onClickSignup} disabled={!agreed}>        
+        Sign up
+      </button>
     </form>
   );
 };
