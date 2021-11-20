@@ -76,7 +76,7 @@ export const UserSignupPage = () => {
           type="checkbox"
         />
       </div>
-      <button onClick={onClickSignup} disabled={!agreed}>        
+      <button className="btn btn-primary" onClick={onClickSignup} disabled={!agreed}>        
         Sign up
       </button>
     </form>
