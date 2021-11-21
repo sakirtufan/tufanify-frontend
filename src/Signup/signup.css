@@ -1,0 +1,16 @@
+#signup {
+  height: 100vh;
+  
+}
+
+.signup{
+    height: 100vh;
+}
+
+.signup form{
+   width: 350px;
+    padding: 2rem;
+    border-radius: 6px;
+}
+
+
