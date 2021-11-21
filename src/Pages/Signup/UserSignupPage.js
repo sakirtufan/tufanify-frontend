@@ -1,8 +1,8 @@
 import React from "react";
 import "./signup.css";
-import Axios from "axios";
 import { useState } from "react";
-import signup from "../images/bg-signup.png";
+import {signup} from "../../api/apiCalls"
+import signupBg from "../images/bg-signup.png";
 
 export const UserSignupPage = () => {
   const [state, setState] = useState({
@@ -22,6 +22,7 @@ export const UserSignupPage = () => {
   };
 
   const onClickSignup = (e) => {
+
     e.preventDefault();
 
     const { username, displayName, password } = state;
@@ -36,7 +37,7 @@ export const UserSignupPage = () => {
       pendingApiCall: true,
     });
 
-    Axios.post("/api/1.0/users", body)
+    signup(body)
     .then((response) => {
       setState({pendingApiCall: false});
     })
@@ -50,7 +51,7 @@ export const UserSignupPage = () => {
     <div
       id="signup"
       style={{
-        backgroundImage: `url(${signup})`,
+        backgroundImage: `url(${signupBg})`,
         backgroundPosition: "right",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
