@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import "../src/main.scss";
 import './index.css';
 import App from './App';
-import { UserSignupPage } from './Signup/UserSignupPage';
+import { UserSignupPage } from './Pages/Signup/UserSignupPage.js';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -2,7 +2,7 @@ import React from "react";
 import "./signup.css";
 import { useState } from "react";
 import {signup} from "../../api/apiCalls"
-import signupBg from "../images/bg-signup.png";
+import signupBg from "../../images/bg-signup.png";
 
 export const UserSignupPage = () => {
   const [state, setState] = useState({
