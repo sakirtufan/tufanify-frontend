@@ -3,6 +3,7 @@ import "./signup.css";
 import { useState } from "react";
 import { signup } from "../../api/apiCalls";
 import signupBg from "../../images/bg-signup.png";
+import Input from "../../components/input";
 
 export const UserSignupPage = () => {
   const [state, setState] = useState({
@@ -16,26 +17,15 @@ export const UserSignupPage = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const errors = {
-      ...state.errors,
-    };
+    const errors = { ...state.errors };
     errors[name] = undefined;
-
-    setState({
-      ...state,
-      [name]: value,
-      errors,
-    });
+    setState({ ...state, [name]: value, errors });
   };
 
   const onClickSignup = (e) => {
     e.preventDefault();
     const { username, displayName, password } = state;
-    const body = {
-      username,
-      displayName,
-      password,
-    };
+    const body = { username,displayName,password };
 
     setState({
       ...state,
@@ -75,73 +65,42 @@ export const UserSignupPage = () => {
     >
       <section className="signup container d-flex justify-content-center align-items-center">
         <form className="bg-primary text-light">
-          <h1 className="text-center mb-3"> Sign Up </h1>{" "}
-          <div className="mb-3 form-group">
-            <label htmlFor="username" className="form-label">
-              {" "}
-              Username{" "}
-            </label>{" "}
-            <input
-              className={
-                state.errors.username
-                  ? "form-control is-invalid"
-                  : "form-control"
-              }
-              id="username"
-              name="username"
-              required
-              value={state.username}
-              onChange={handleChange}
-            />{" "}
-            <div className="invalid-feedback"> {state.errors.username} </div>{" "}
-          </div>{" "}
+          <h1 className="text-center mb-3"> Sign Up </h1>
+          <Input label="Username" error={state.errors.username} name="username" onChange={handleChange}/>
+          <Input label="Display Name" error={state.errors.displayName} name="displayName" onChange={handleChange}/>
           <div className="mb-3">
-            <label className="form-label"> Display Name </label>{" "}
-            <input
-              className={
-                state.errors.displayName
-                  ? "form-control is-invalid"
-                  : "form-control"
-              }
-              name="displayName"
-              value={state.displayName}
-              onChange={handleChange}
-            />{" "}
-            <div className="invalid-feedback"> {state.errors.displayName} </div>{" "}
-          </div>{" "}
-          <div className="mb-3">
-            <label className="form-label"> Password </label>{" "}
+            <label className="form-label"> Password </label>
             <input
               className="form-control"
               name="password"
               type="password"
               value={state.password}
               onChange={handleChange}
-            />{" "}
-          </div>{" "}
+            />
+          </div>
           <div className="mb-3">
-            <label className="form-label"> Password Repeat </label>{" "}
+            <label className="form-label"> Password Repeat </label>
             <input
               className="form-control"
               name="passwordRepeat"
               type="password"
               value={state.passwordRepeat}
               onChange={handleChange}
-            />{" "}
-          </div>{" "}
+            />
+          </div>
           <button
             className="btn btn-info w-100 mt-5"
             onClick={onClickSignup}
             disabled={state.pendingApiCall}
           >
-            {" "}
+            
             {state.pendingApiCall && (
               <span className="spinner-border spinner-border-sm"> </span>
             )}
-            Sign up{" "}
-          </button>{" "}
-        </form>{" "}
-      </section>{" "}
+            Sign up
+          </button>
+        </form>
+      </section>
     </div>
   );
 };
