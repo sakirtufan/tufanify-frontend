@@ -1,19 +1,17 @@
 #signup {
-  height: 100vh;  
+  height: 100vh;
 }
 
-.signup{
-    height: 100vh;
+.signup {
+  height: 100vh;
 }
 
-.signup form{
-   width: 350px;
-    padding: 2rem;
-    border-radius: 6px;
+.signup form {
+  width: 350px;
+  padding: 2rem;
+  border-radius: 6px;
 }
 
-.invalid-feedback{
-  color: aqua!important;
+.invalid-feedback {
+  color: aqua !important;
 }
-
-
