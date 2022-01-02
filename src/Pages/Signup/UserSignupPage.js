@@ -68,16 +68,7 @@ export const UserSignupPage = () => {
           <h1 className="text-center mb-3"> Sign Up </h1>
           <Input label="Username" error={state.errors.username} name="username" onChange={handleChange}/>
           <Input label="Display Name" error={state.errors.displayName} name="displayName" onChange={handleChange}/>
-          <div className="mb-3">
-            <label className="form-label"> Password </label>
-            <input
-              className="form-control"
-              name="password"
-              type="password"
-              value={state.password}
-              onChange={handleChange}
-            />
-          </div>
+          <Input label="Password" error={state.errors.password} name="password" onChange={handleChange} type="password"/>
           <div className="mb-3">
             <label className="form-label"> Password Repeat </label>
             <input
