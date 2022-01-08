@@ -19,6 +19,15 @@ export const UserSignupPage = () => {
     const { name, value } = event.target;
     const errors = { ...state.errors };
     errors[name] = undefined;
+    if( name === "password" || name === "passwordRepeat"){
+      if( name === "password" && value !== state.passwordRepeat){
+        errors.passwordRepeat = "Password mismatch";
+      }else if(name === "passwordRepeat" && value !== state.password){
+        errors.passwordRepeat = "Password mismatch";
+      }else{
+        errors.passwordRepeat = undefined;
+      }
+    }
     setState({ ...state, [name]: value, errors });
   };
 
@@ -69,20 +78,11 @@ export const UserSignupPage = () => {
           <Input label="Username" error={state.errors.username} name="username" onChange={handleChange}/>
           <Input label="Display Name" error={state.errors.displayName} name="displayName" onChange={handleChange}/>
           <Input label="Password" error={state.errors.password} name="password" onChange={handleChange} type="password"/>
-          <div className="mb-3">
-            <label className="form-label"> Password Repeat </label>
-            <input
-              className="form-control"
-              name="passwordRepeat"
-              type="password"
-              value={state.passwordRepeat}
-              onChange={handleChange}
-            />
-          </div>
+          <Input label="Password Repeat" error={state.errors.passwordRepeat} name="passwordRepeat" onChange={handleChange} type="password"/>
           <button
             className="btn btn-info w-100 mt-5"
             onClick={onClickSignup}
-            disabled={state.pendingApiCall}
+            disabled={ state.pendingApiCall || state.errors.passwordRepeat !== undefined }
           >
             
             {state.pendingApiCall && (
