@@ -15,3 +15,15 @@
 .invalid-feedback {
   color: aqua !important;
 }
+
+.language-wrapper{
+  text-align: right;
+}
+
+.language-flag{
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
