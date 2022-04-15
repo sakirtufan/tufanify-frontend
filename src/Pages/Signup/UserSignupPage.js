@@ -2,7 +2,7 @@ import React from "react";
 import "./signup.css";
 import { useState } from "react";
 import { withTranslation } from "react-i18next";
-import { signup,changeLanguage } from "../../api/apiCalls";
+import { signup, changeLanguage } from "../../api/apiCalls";
 import signupBg from "../../images/bg-signup.png";
 import Input from "../../components/input";
 
@@ -78,7 +78,7 @@ const UserSignupPage = ({ t, i18n }) => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <section className="language-wrapper">
+      <section className="d-none d-md-block text-right pt-3">
         <img
           src="https://countryflagsapi.com/png/tr"
           alt="Turkish Flag"
@@ -97,6 +97,17 @@ const UserSignupPage = ({ t, i18n }) => {
           onClick={() => onChangeLanguage("de")}
           className="language-flag"
         ></img>
+      </section>
+      <section className="pr-3 d-md-none text-right pt-3">
+        <button className="language-button" href="#" onClick={() => onChangeLanguage("tr")}>
+          TR
+        </button><span className="px-2 font-weight-bold">|</span>
+        <button className="language-button" onClick={() => onChangeLanguage("en")} >
+          EN
+        </button><span className="px-2 font-weight-bold">|</span>
+        <button className="language-button" onClick={() => onChangeLanguage("de")} >
+          DE
+        </button>
       </section>
       <div>
         <section className="signup container d-flex justify-content-center align-items-center">
