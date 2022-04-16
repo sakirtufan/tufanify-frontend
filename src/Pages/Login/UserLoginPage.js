@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
+import { withTranslation } from "react-i18next";
 import LoginBg from "../../images/bg-login.png";
 import Input from "../../components/input";
 import "../Signup/signup.css";
 
-const UserLoginPage = () => {
+const UserLoginPage = ({ t, i18n }) => {
   const [state, setState] = useState({
     username: null,
     password: null,
@@ -32,24 +33,24 @@ const UserLoginPage = () => {
     >
       <section className="signup container d-flex justify-content-center align-items-center">
         <form className="bg-primary text-light">
-          <h1 className="text-center mb-3">Login</h1>
+          <h1 className="text-center mb-3">{t("Login")}</h1>
           <Input
-            label="Username"
+            label={t("Username")}
             name="username"
             type="text"
             onChange={handleChange}
           />
           <Input
-            label="Password"
+            label={t("Password")}
             name="password"
             type="password"
             onChange={handleChange}
           />
-          <button className="btn btn-info w-100 mt-5" onClick={onClickLogin}>Login</button>
+          <button className="btn btn-info w-100 mt-5" onClick={onClickLogin}>{t("Login")}</button>
         </form>
       </section>
     </div>
   );
 };
 
-export default UserLoginPage;
+export default withTranslation()(UserLoginPage);
